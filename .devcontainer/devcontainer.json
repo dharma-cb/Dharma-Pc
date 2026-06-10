@@ -1,0 +1,25 @@
+{
+  "name": "Windows 10 Codespace",
+  "image": "dharma-pc:latest",
+  "features": {},
+  "forwardPorts": [8000],
+  "portsAttributes": {
+    "3000": {
+      "visibility": "private",
+      "requireAuthentication": true,
+      "description": "Backend - Not accessible to users"
+    },
+    "8000": {
+      "visibility": "public",
+      "requireAuthentication": false,
+      "description": "Windows 10 RDP Desktop Access"
+    }
+  },
+  "remoteUser": "root",
+  "postCreateCommand": "powershell -Command 'Write-Host \"Windows 10 environment ready. Connect via RDP on port 8000\"'",
+  "customizations": {
+    "codespaces": {
+      "openInBrowserOnStart": false
+    }
+  }
+}
