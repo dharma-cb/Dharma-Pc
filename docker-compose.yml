@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+  windows10:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"  # Windows 10 RDP Desktop (accessible)
+      # Port 3000 intentionally not exposed
+    environment:
+      - ACCEPT_EULA=Y
+    stdin_open: true
+    tty: true
+    volumes:
+      - windows-data:/windows/system32
+    networks:
+      - windows-network
+
+volumes:
+  windows-data:
+
+networks:
+  windows-network:
+    driver: bridge
